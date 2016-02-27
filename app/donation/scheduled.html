@@ -30,7 +30,7 @@
     <div class="container">
         <div class="header">
           <ul class="nav nav-pills pull-right">
-            <li><a href="#">Donations</a></li>
+            <li><a href="/donations">Donations</a></li>
             <li><a href="#">Logout</a></li>
           </ul>
           <h3 class="text-muted">FeedTo.Me</h3>
@@ -38,6 +38,7 @@
 
       <div class="row marketing">
         <div class="col-lg-6">
+            <h1>Schedule your donation</h1>
             <form>
               <div class="form-group">
                 <label for="exampleInputType1">Title</label>
@@ -74,7 +75,7 @@
                             <input type="number" class="form-control" id="Quantity" value="5">
                         </div>
                         <div class="col-sm-1">
-                            <button class="btn btn-warning inline">+</button>
+                            <button class="btn btn-secondary inline">-</button>
                         </div>
                     </div>
                     <div class="row">
@@ -85,19 +86,25 @@
                             <input type="number" class="form-control" id="Quantity" value="2">
                         </div>
                         <div class="col-sm-1">
-                            <button class="btn btn-warning inline">+</button>
+                            <button class="btn btn-secondary inline">-</button>
                         </div>
                     </div>
+
+                    <button class="btn btn-warning inline">+</button>
               </div>
 
               <div class="form-group">
                   <label>Pickup Window</label>
                     <div class="row">
                         <div class="col-sm-6">
-                            <input type="datetime-local">
+                            <label>Start</label>
+                            <input type="datetime-local" value="2016-02-27T18:03">
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-sm-6">
-                            <input type="datetime-local">
+                            <label>End</label>
+                            <input type="datetime-local" value="2016-02-29T18:03">
                         </div>
                     </div>
                 </div>
