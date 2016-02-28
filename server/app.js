@@ -32,8 +32,16 @@ app.get('/listings', function (req, res) {
 
 	console.log('here');
 	
-	return res.json({my_data: data});
+	return res.json({listings: data});
 });
+
+app.get('/organization/listings', function (req, res) {
+
+	data = execQuery("SELECT * FROM innodb.pickup WHERE organization_id = req.query.id" );
+
+	return res.json({listings: data});
+});
+
 
 app.get('/submit', function (req, res) {
 
