@@ -3,7 +3,7 @@ var app = express();
 var mysql = require('mysql');
  
 
-function execQuery(query) {
+function execQuery(query, res) {
 
 	var connection = mysql.createConnection({
 	  host     : 'acapps2016.cdlyexcnfx4w.us-west-2.rds.amazonaws.com',
@@ -22,7 +22,7 @@ function execQuery(query) {
 		
 		console.log(rows);
 	
-		return rows;
+		res.send({listings: rows});
 	});	
 	
 	
@@ -32,18 +32,16 @@ function execQuery(query) {
  
 app.get('/listings', function (req, res) {
 	
-	data = execQuery("SELECT * FROM innodb.pickup WHERE status='available';");
-
-	console.log('here');
+	res.setHeader('Content-Type', 'application/json');
 	
-	return res.json({listings: data});
+	data = execQuery("SELECT * FROM innodb.pickup WHERE status='available';", res);
 });
 
 app.get('/organization/listings', function (req, res) {
 
-	data = execQuery("SELECT * FROM innodb.pickup WHERE organization_id=" + req.query.id);
+	res.setHeader('Content-Type', 'application/json');
 
-	return res.json({listings: data});
+	data = execQuery("SELECT * FROM innodb.pickup WHERE organization_id=" + req.query.id, res);
 });
 
 
