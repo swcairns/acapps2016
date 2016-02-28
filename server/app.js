@@ -14,21 +14,25 @@ function execQuery(query) {
 
 	connection.connect();
 
+	console.log(query);
+	
 	connection.query(query, function(err, rows, fields) {
 	
 		//if (err) return err;
 		
 		console.log(rows);
-		
+	
 		return rows;
 	});	
+	
+	
 	
 	connection.end();
 };
  
 app.get('/listings', function (req, res) {
 	
-	data = execQuery("SELECT * FROM innodb.pickup WHERE status = 'available';");
+	data = execQuery("SELECT * FROM innodb.pickup WHERE status='available';");
 
 	console.log('here');
 	
@@ -37,14 +41,15 @@ app.get('/listings', function (req, res) {
 
 app.get('/organization/listings', function (req, res) {
 
-	data = execQuery("SELECT * FROM innodb.pickup WHERE organization_id = req.query.id" );
+	data = execQuery("SELECT * FROM innodb.pickup WHERE organization_id=" + req.query.id);
 
 	return res.json({listings: data});
 });
 
 
 app.get('/submit', function (req, res) {
-
+	
+	
 	
 
 });
